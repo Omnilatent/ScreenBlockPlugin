@@ -44,7 +44,7 @@ public class DialogUtil {
         }
     }
 
-    public static void showDialogDismissOnResume(Activity activity) {
+    public static void showDialogDismissOnResume(Activity activity, int delayClose) {
         if (dialogLoading == null) {
             dialogLoading = new Dialog(activity, android.R.style.Theme_Light);
             dialogLoading.setCancelable(false);
@@ -75,7 +75,7 @@ public class DialogUtil {
                     new Handler().postDelayed(() -> {
                         closeDialog();
                         activity.getApplication().unregisterActivityLifecycleCallbacks(this);
-                    }, 200);
+                    }, delayClose);
                 }
             }
 
